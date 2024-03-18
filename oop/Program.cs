@@ -1,5 +1,7 @@
 ﻿using System;
-class Car {
+
+//*** Abstraction :3
+abstract class Car {
     //git
     //*** Encapsulation :3
     //Private Attributes
@@ -48,13 +50,17 @@ class Car {
 
     //*** Polymorphism :3
     virtual public void Horn() {
-        Console.WriteLine("The car makes car-horn sound.");
+        Console.WriteLine("The car makes horn sound.");
     }
+
+    //Abstract Method
+    public abstract void Engine();
 
 }
 
+
     //*** Inheritance :3
-class Truck : Car
+class Truck : Car 
 {
     //Inherited Constructor
     public Truck(string model, string make, int year) : base(model,make,year)
@@ -75,6 +81,13 @@ class Truck : Car
     override public void Horn() {
         Console.WriteLine("The truck makes truck-horn sound.");
     }
+
+    //Inherited Abstract Method
+    public override void Engine()
+    {
+        Console.WriteLine("Truck-engine starts");
+    }
+
 
 }
 
@@ -100,32 +113,43 @@ class Van : Car
         Console.WriteLine("The van makes van-horn sound.");
     }
 
+    //Inherited Abstract Method
+    public override void Engine()
+    {
+        Console.WriteLine("Van-engine starts");
+    }
+
 }
 
 
     //Inheritance :3 ***
     //Polymorphism :3 ***
+    //Abstraction :3 ***
 
 
 class Program {
     static void Main(string[] args) {
-        Car myCar = new Car("Toyota", "Corolla", 2023);
-        Console.WriteLine($"Model: {myCar.model}, Make: {myCar.make}, Year: {myCar.year}");
-        myCar.Drive();
-        myCar.Stop();
-        myCar.Horn();
+        //Abstract Superclass Removed
 
+        //Subclass 1
         Truck myTruck = new Truck("Ford", "F-150", 2024);
+        Car T = new Truck("Toyota", "Corolla", 2023);
+        Car Te = new Truck("Toyota", "Corolla", 2023);
         Console.WriteLine($"Model: {myTruck.model}, Make: {myTruck.make}, Year: {myTruck.year}");
         myTruck.Drive();
         myTruck.Stop();
-        myTruck.Horn();
+        T.Horn();
+        Te.Engine();
 
+        //Subclass 2
         Van myVan = new Van("Volkswagen", "trasporter", 2021);
+        Car V = new Van("Toyota", "Corolla", 2023);
+        Car Ve = new Van("Toyota", "Corolla", 2023);
         Console.WriteLine($"Model: {myVan.model}, Make: {myVan.make}, Year: {myVan.year}");
         myVan.Drive();
         myVan.Stop();
-        myVan.Horn();
+        V.Horn();
+        Ve.Engine();
 
     }
 }
@@ -133,5 +157,5 @@ class Program {
 //*Objectives check*
 //Encapsulation : DONE
 //Inheritance : DONE
-//Polymorphism : on-going
-//Abstraction : Pending
+//Polymorphism : DONE
+//Abstraction : DONE
